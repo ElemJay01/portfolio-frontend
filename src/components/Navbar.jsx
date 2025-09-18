@@ -138,7 +138,7 @@ export default function Navbar() {
               Contact
             </a>
             <a
-              href="/resume.pdf"
+              href="/LmJames-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-block px-4 py-2 rounded-md bg-blue-600 text-white font-medium text-center hover:bg-blue-700"

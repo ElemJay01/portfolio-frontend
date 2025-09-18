@@ -31,7 +31,7 @@ export default function About() {
           </p>
 
           <a
-            href="/resume.pdf"
+            href="/LmJames-Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-full transition"
