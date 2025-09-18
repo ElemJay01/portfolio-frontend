@@ -9,11 +9,13 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
   const [fullLoading, setFullLoading] = useState(true);
 
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   useEffect(() => {
     const fetchImages = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/images");
+        const res = await fetch(`${API_URL}/api/images`);
         const data = await res.json();
         setImages(data);
       } catch (err) {
