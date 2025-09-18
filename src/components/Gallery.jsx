@@ -37,7 +37,6 @@ export default function Gallery() {
 
   const closeLightbox = () => {
     setLightboxIndex(null);
-    // setFullLoading(false);
   };
 
   const nextImage = useCallback(() => {
@@ -62,6 +61,22 @@ export default function Gallery() {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [lightboxIndex, nextImage, prevImage]);
+
+  // Preload next and previous images to improve performance
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      // preload next
+      if (images[lightboxIndex + 1]) {
+        const preloadNext = new Image();
+        preloadNext.src = images[lightboxIndex + 1].fullUrl;
+      }
+      // preload previous
+      if (images[lightboxIndex - 1]) {
+        const preloadPrev = new Image();
+        preloadPrev.src = images[lightboxIndex - 1].fullUrl;
+      }
+    }
+  }, [lightboxIndex, images]);
 
   return (
     <section id="gallery" className="py-10 px-6">
@@ -133,6 +148,7 @@ export default function Gallery() {
               &#10094;
             </button>
 
+            {/* slider */}
             <div className="relative flex items-center justify-center max-w-5xl max-h-[80vh] w-full h-full">
               {fullLoading && (
                 <div className="absolute inset-0 flex items-center justify-center">
