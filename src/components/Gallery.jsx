@@ -28,7 +28,7 @@ export default function Gallery() {
     fetchImages();
   }, [API_URL]);
 
-  const visibleImages = showAll ? images : images.slice(0, 9);
+  const visibleImages = showAll ? images : images.slice(0, 10);
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
@@ -79,20 +79,22 @@ export default function Gallery() {
           <Spinner />
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> */}
               {visibleImages.map((image, index) => (
                 <img
                   key={index}
                   src={image.thumbnailUrl}
                   alt={`Gallery ${index}`}
-                  className="w-full h-90 object-cover rounded-lg cursor-pointer hover:scale-105 transition"
+                  // className="w-full h-90 object-cover rounded-lg cursor-pointer hover:scale-105 transition"
+                  className="w-full h-40 sm:h-52 md:h-64 object-cover rounded-lg cursor-pointer hover:scale-105 transition"
                   onClick={() => openLightbox(index)}
                 />
               ))}
             </div>
 
             {/* Toggle button */}
-            {images.length > 9 && (
+            {images.length > 10 && (
               <div className="text-center mt-6">
                 <button
                   onClick={() => {
