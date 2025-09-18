@@ -26,7 +26,7 @@ export default function Gallery() {
     };
 
     fetchImages();
-  }, []);
+  }, [API_URL]);
 
   const visibleImages = showAll ? images : images.slice(0, 9);
 
